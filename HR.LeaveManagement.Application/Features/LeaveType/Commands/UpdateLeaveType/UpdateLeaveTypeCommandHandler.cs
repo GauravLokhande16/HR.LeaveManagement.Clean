@@ -28,7 +28,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeave
             if(validationResult.Errors.Any())
             {
                 _logger.LogWarning("Validation error in update request for {0} - {1}", nameof(LeaveType), request.Id);
-                throw new BadRequestException("Invalid Leave type");
+                throw new BadRequestException("Invalid Leave type", validationResult);
             }
 
             // convert to domain entity object

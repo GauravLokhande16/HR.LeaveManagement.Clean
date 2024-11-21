@@ -27,7 +27,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.Creat
 
             if (validationResult.Errors.Any())
             {
-                throw new BadRequestException("Invalid Leave Allocation Request");
+                throw new BadRequestException("Invalid Leave Allocation Request", validationResult);
             }
 
             // Get Leave type for allocations
