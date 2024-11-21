@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FluentValidation.Results;
+using System.Globalization;
 
 namespace HR.LeaveManagement.Application.Exceptions
 {
@@ -16,16 +17,10 @@ namespace HR.LeaveManagement.Application.Exceptions
         //}
         public BadRequestException(string message, ValidationResult validationResult) : base(message)
         {
-            ValidationErrors = new();
-
-            // Loop through each validation error and add its message to the list
-            foreach (var error in validationResult.ErrorMessage)
-            {
-                ValidationErrors.Add(error.ToString());
-            }
+            ValidationErrors = validationResult.ToDictionary();
         }
 
-        public List<string> ValidationErrors { get; set; }
+        public IDictionary<string, string[]> ValidationErrors { get; set; }
 
     }
 }

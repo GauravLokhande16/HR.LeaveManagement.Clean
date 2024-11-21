@@ -29,7 +29,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Commands.CreateLe
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Any())
-                throw new BadRequestException("Invalid Leave Request");
+                throw new BadRequestException("Invalid Leave Request", validationResult);
 
             // Get requesting employee's id
 

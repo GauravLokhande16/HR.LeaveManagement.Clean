@@ -26,7 +26,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
             var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
 
             // return list of DTO object
-            _logger.LogInformation("Leave Types were retrived sucessfully.");
+            _logger.LogInformation("Leave Types were retrived sucessfully.",data);
             return data;
         }
     }
